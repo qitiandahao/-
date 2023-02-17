@@ -96,6 +96,13 @@ public class EmployeeController {
         return R.success("新增员工成功");
     }
 
+    /**
+     * 员工信息分页查询
+     * @param page
+     * @param pageSize
+     * @param name
+     * @return
+     */
     @GetMapping("/page")
     public R<Page> page(int page, int pageSize, String name) {
         log.info("page ={},pageSize={},name={}", page, pageSize, name);
@@ -108,7 +115,7 @@ public class EmployeeController {
         //执行查询
         queryWrapper.orderByDesc(Employee::getUpdateTime);
         employeeService.page(pageInfo,queryWrapper);
-        return null;
+        return R.success(pageInfo);
     }
 
 }
