@@ -98,6 +98,7 @@ public class EmployeeController {
 
     /**
      * 员工信息分页查询
+     *
      * @param page
      * @param pageSize
      * @param name
@@ -111,11 +112,22 @@ public class EmployeeController {
         //构造条件构造器
         LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper();
         //添加过滤条件
-        queryWrapper.like(StringUtils.hasText(name),Employee::getName,name);
+        queryWrapper.like(StringUtils.hasText(name), Employee::getName, name);
         //执行查询
         queryWrapper.orderByDesc(Employee::getUpdateTime);
-        employeeService.page(pageInfo,queryWrapper);
+        employeeService.page(pageInfo, queryWrapper);
         return R.success(pageInfo);
     }
 
+    /**
+     * 根据员工信息修改数据
+     * @param employee
+     * @return
+     */
+    @PutMapping
+    public R<String> update(@RequestBody Employee employee) {
+        log.info(employee.toString());
+
+        return null;
+    }
 }
