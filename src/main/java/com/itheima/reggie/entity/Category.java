@@ -35,22 +35,22 @@ public class Category implements Serializable {
 
     //创建时间
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    private LocalDateTime create_time;
 
 
     //更新时间
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updateTime;
+    private LocalDateTime update_time;
 
 
     //创建人
     @TableField(fill = FieldFill.INSERT)
-    private Long createUser;
+    private Long create_user;
 
 
     //修改人
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Long updateUser;
+    private Long update_user;
 
 
     //是否删除
