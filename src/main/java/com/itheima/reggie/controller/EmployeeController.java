@@ -114,6 +114,7 @@ public class EmployeeController {
         //添加过滤条件
         queryWrapper.like(StringUtils.hasText(name), Employee::getName, name);
         //执行查询
+        //：：实例化一个对象，调用getUpdateTime方法。
         queryWrapper.orderByDesc(Employee::getUpdateTime);
         employeeService.page(pageInfo, queryWrapper);
         return R.success(pageInfo);
@@ -125,9 +126,12 @@ public class EmployeeController {
      * @return
      */
     @PutMapping
-    public R<String> update(@RequestBody Employee employee) {
+    public R<String> update(HttpServletRequest request,@RequestBody Employee employee) {
         log.info(employee.toString());
-
-        return null;
+        long empid=(Long)request.getSession().getAttribute("employee");
+        employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(empid);
+        employeeService.updateById(employee);
+        return R.success("员工信息修改成功");
     }
 }
