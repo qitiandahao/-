@@ -5,4 +5,6 @@ import com.itheima.reggie.entity.Category;
 import com.itheima.reggie.entity.Employee;
 
 public interface CategoryService extends IService<Category> {
+    public void remove(long id);
+
 }
