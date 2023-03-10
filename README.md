@@ -1,2 +1,2 @@
-java项目
-SpringBoot项目，快速开发
+SpringBoot+Mybatis-Plus+Vue+Mysql
+SpringBoot项目
